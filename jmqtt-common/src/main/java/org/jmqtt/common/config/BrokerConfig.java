@@ -1,10 +1,15 @@
 package org.jmqtt.common.config;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class BrokerConfig {
 
     private String jmqttHome = System.getProperty("jmqttHome",System.getenv("JMQTT_HOME"));
 
-    private String version = "1.0.0";
+    @Value("${jmqtt.broker.version}")
+    private String version;
 
     private boolean anonymousEnable = true;
 

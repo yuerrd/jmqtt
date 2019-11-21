@@ -1,16 +1,24 @@
 package org.jmqtt.common.config;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 /**
  * cluster group config
  */
+@Component
 public class ClusterConfig {
 
+    @Value("${jmqtt.cluster.currentNodeIp}")
     private String currentNodeIp = "";
-    private String nodeName = "defaultNode:" + (System.currentTimeMillis() & 0xFFFFFF);
-    private int groupServerPort = 8880;
+    @Value("${jmqtt.cluster.nodeName}")
+    private String nodeName;
+    @Value("${jmqtt.cluster.groupServerPort}")
+    private int groupServerPort;
     /**
      * cluster node : ip1:port1;ip2;port2
      */
+    @Value("${jmqtt.cluster.groupNodes}")
     private String groupNodes = "";
     private long timeoutMills = 3000L;
 

@@ -3,19 +3,20 @@ package org.jmqtt.broker.dispatcher;
 
 import io.netty.handler.codec.mqtt.MqttPublishMessage;
 import org.jmqtt.broker.subscribe.SubscriptionMatcher;
-import org.jmqtt.remoting.session.ClientSession;
 import org.jmqtt.common.bean.Message;
 import org.jmqtt.common.bean.MessageHeader;
 import org.jmqtt.common.bean.Subscription;
 import org.jmqtt.common.helper.RejectHandler;
 import org.jmqtt.common.helper.ThreadFactoryImpl;
 import org.jmqtt.common.log.LoggerName;
+import org.jmqtt.remoting.session.ClientSession;
 import org.jmqtt.remoting.session.ConnectManager;
 import org.jmqtt.remoting.util.MessageUtil;
 import org.jmqtt.store.FlowMessageStore;
 import org.jmqtt.store.OfflineMessageStore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 
+@Component
 public class DefaultDispatcherMessage implements MessageDispatcher {
 
     private static final Logger log = LoggerFactory.getLogger(LoggerName.MESSAGE_TRACE);
@@ -38,6 +40,10 @@ public class DefaultDispatcherMessage implements MessageDispatcher {
     private SubscriptionMatcher subscriptionMatcher;
     private FlowMessageStore flowMessageStore;
     private OfflineMessageStore offlineMessageStore;
+
+    public DefaultDispatcherMessage() {
+
+    }
 
     public DefaultDispatcherMessage(int pollThreadNum, SubscriptionMatcher subscriptionMatcher, FlowMessageStore flowMessageStore, OfflineMessageStore offlineMessageStore) {
         this.pollThreadNum = pollThreadNum;

@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: jmqtt-broker
+jmqtt:
+  broker:
+    version: @project.version@
+  store:
+    storeType: 3 # storage: 1.rocksdb 2.default 3.memory
+    rocksDbPath: rocksdb.db
+  cluster:
+    currentNodeIp: ""
+    nodeName: node_1
+    groupServerPort: 8880
+    groupNodes: "" #init group nodes,ip1:port1;ip2:port2
+  netty:
+    maxMsgSize: 524288
+    tcpPort: 1883
+    startTcp: true
+    startWebsocket: true
+    websocketPort: 1884
+    startSslTcp: true
+    SslTcpPort: 8883
+    startSslWebsocket: true
+    SslWebsocketPort: 8884
