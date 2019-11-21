@@ -1,5 +1,9 @@
 package org.jmqtt.common.config;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class NettyConfig {
 
     private int selectorThreadNum = 3;
@@ -17,26 +21,34 @@ public class NettyConfig {
     /**
      * tcp port default 1883
      */
-    private boolean startTcp = true;
-    private int tcpPort = 1883;
+    @Value("${jmqtt.netty.startTcp}")
+    private boolean startTcp;
+    @Value("${jmqtt.netty.tcpPort}")
+    private int tcpPort;
 
     /**
      * websocket port default 1884
      */
-    private boolean startWebsocket = true;
-    private int websocketPort = 1884;
+    @Value("${jmqtt.netty.startWebsocket}")
+    private boolean startWebsocket;
+    @Value("${jmqtt.netty.websocketPort}")
+    private int websocketPort;
 
     /**
      * tcp port with ssl default 8883
      */
-    private boolean startSslTcp = true;
-    private int SslTcpPort = 8883;
+    @Value("${jmqtt.netty.startSslTcp}")
+    private boolean startSslTcp;
+    @Value("${jmqtt.netty.SslTcpPort}")
+    private int SslTcpPort;
 
     /**
      * websocket port with ssl default 8884
      */
-    private boolean startSslWebsocket = true;
-    private int SslWebsocketPort = 8884;
+    @Value("${jmqtt.netty.startSslWebsocket}")
+    private boolean startSslWebsocket;
+    @Value("${jmqtt.netty.SslWebsocketPort}")
+    private int SslWebsocketPort;
 
     /**
      * SSL setting
@@ -51,7 +63,8 @@ public class NettyConfig {
     /**
      * max mqtt message size
      */
-    private int maxMsgSize = 512*1024;
+    @Value("${jmqtt.netty.maxMsgSize}")
+    private int maxMsgSize;
 
     public int getSelectorThreadNum() {
         return selectorThreadNum;

@@ -1,18 +1,23 @@
 package org.jmqtt.common.config;
 
-import java.io.File;
-import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+import java.io.File;
+
+@Component
 public class StoreConfig {
 
 
     /**
      * store type default 1:rocksdb  2.redis  3.in memory
      */
-    private int storeType = 3;
+    @Value("${jmqtt.store.storeType}")
+    private int storeType;
 
 
     /* rocksdb store configuration start */
+    @Value("${jmqtt.store.rocksDbPath}")
     private String rocksDbPath = System.getProperty("user.home",System.getenv("user.home"))+ File.separator + "rocksdb";
     private int maxBackgroundFlushes = 10;
     private int maxBackgroundCompactions = 10;

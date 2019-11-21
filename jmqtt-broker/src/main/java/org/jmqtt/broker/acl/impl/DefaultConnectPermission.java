@@ -1,8 +1,10 @@
 package org.jmqtt.broker.acl.impl;
 
 import org.jmqtt.broker.acl.ConnectPermission;
+import org.springframework.stereotype.Service;
 
 
+@Service("DefaultConnectPermission")
 public class DefaultConnectPermission implements ConnectPermission {
 
 
