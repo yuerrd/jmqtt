@@ -6,6 +6,7 @@ import io.netty.handler.ssl.*;
 import org.jmqtt.common.log.LoggerName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
 
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLEngine;
@@ -33,7 +34,8 @@ public class NettySslHandler {
 
     private static SslContext createSSLContext(boolean useClientCA, String sslKeyStoreType, String sslKeyFilePath, String sslManagerPwd, String sslStorePwd) {
         try {
-            InputStream ksInputStream = new FileInputStream(sslKeyFilePath);
+            ClassPathResource resource = new ClassPathResource(sslKeyFilePath);
+            InputStream ksInputStream = resource.getInputStream();
             KeyStore ks = KeyStore.getInstance(sslKeyStoreType);
             ks.load(ksInputStream, sslStorePwd.toCharArray());
 
