@@ -54,8 +54,10 @@ public class NettyConfig {
      * SSL setting
      */
     private boolean useClientCA = false;
-    private String sslKeyStoreType = "PKCS12";
-    private String sslKeyFilePath = "/conf/server.pfx";
+    @Value("${jmqtt.netty.sslKeyStoreType}")
+    private String sslKeyStoreType;
+    @Value("${jmqtt.netty.sslKeyFilePath}")
+    private String sslKeyFilePath;
     private String sslManagerPwd = "654321";
     private String sslStorePwd = "654321";
 

@@ -22,3 +22,5 @@ jmqtt:
     SslTcpPort: 8883
     startSslWebsocket: true
     SslWebsocketPort: 8884
+    sslKeyStoreType: jks
+    sslKeyFilePath:  certs/server.jks
